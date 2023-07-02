@@ -6,4 +6,5 @@ add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Controllers/Packet
 
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Structs/SubSystemEnum/")
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Structs/DataPacket/")
-add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Structs/AdapterPorts/")
+add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Structs/AdapterPorts/")add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Behaviors/ScienceMode/")
+add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Controllers/CamController/")
