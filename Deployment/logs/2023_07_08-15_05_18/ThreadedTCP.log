@@ -1,0 +1,10 @@
+TCP Socket Server listening on host addr 0.0.0.0, port 50050
+Registered client FSW_
+Registration complete waiting for message.
+Registered client GUI_
+Registration complete waiting for message.
+Ctrl-C received, server shutting down.
+socket timed out and shutdown is requested
+Quit received!
+socket timed out and shutdown is requested
+Quit processed!

@@ -1,11 +1,12 @@
-module CamController {
+module OBC {
     @ Camera Controller
     active component CamController {
 
-        # One async command/port is required for active components
-        # This should be overridden by the developers with a useful command/port
-        @ TODO
-        async command TODO opcode 0
+        async command CREATE_DIR(dir_name: string size 10)
+
+        event CREATED_DIR(
+            dir_name: string size 10 
+        ) severity activity low format "new dir_name: {}"
 
         ##############################################################################
         #### Uncomment the following examples to start customizing your component ####
