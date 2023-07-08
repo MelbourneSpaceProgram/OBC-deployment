@@ -49,6 +49,7 @@ module Deployment {
     instance adapter
     instance linuxI2cDriver
     instance linuxSpiDriver
+    instance camController
 
     # ----------------------------------------------------------------------
     # Pattern graph specifiers

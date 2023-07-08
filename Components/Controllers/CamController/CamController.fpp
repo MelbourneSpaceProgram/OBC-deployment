@@ -2,10 +2,10 @@ module OBC {
     @ Camera Controller
     active component CamController {
 
-        async command CREATE_DIR(dir_name: string size 10)
+        async command CREATE_DIR(dirName: string size 10)
 
         event CREATED_DIR(
-            dir_name: string size 10 
+            dirName: string size 10 
         ) severity activity low format "new dir_name: {}"
 
         ##############################################################################

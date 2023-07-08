@@ -1,0 +1,3 @@
+2023-07-08 15:45:10,(2(0)-1688795110:401633),camController.CREATE_DIR,4096,[ ' t e s t i n g ' ]
+2023-07-08 15:45:51,(2(0)-1688795151:334619),fileManager.RemoveDirectory,2050,[ ' t e s t i n g ' ]
+2023-07-08 15:45:54,(2(0)-1688795154:344288),fileManager.RemoveDirectory,2050,[ ' t e s t i n g ' ]

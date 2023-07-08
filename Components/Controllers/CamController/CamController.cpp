@@ -7,6 +7,7 @@
 
 #include <Components/Controllers/CamController/CamController.hpp>
 #include <FpConfig.hpp>
+#include "Os/FileSystem.hpp"
 
 namespace OBC {
 
@@ -36,11 +37,17 @@ namespace OBC {
     CREATE_DIR_cmdHandler(
         const FwOpcodeType opCode,
         const U32 cmdSeq,
-        const Fw::CmdStringArg& dir_name
+        const Fw::CmdStringArg& dirName
     )
   {
-    // TODO
-    this->cmdResponse_out(opCode,cmdSeq,Fw::CmdResponse::OK);
+    const Os::FileSystem::Status status =
+      Os::FileSystem::createDirectory(dirName.toChar());
+      if (status == Os::FileSystem::OP_OK) {
+        this->log_ACTIVITY_LO_CREATED_DIR(dirName);
+        this->cmdResponse_out(opCode,cmdSeq,Fw::CmdResponse::OK);
+      }
+
+    
   }
 
 } // end namespace OBC

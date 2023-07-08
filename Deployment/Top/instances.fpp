@@ -87,6 +87,11 @@ module Deployment {
     stack size Default.STACK_SIZE \
     priority 100
 
+  instance camController: OBC.CamController base id 0x1000 \
+    queue size Default.QUEUE_SIZE \
+    stack size Default.STACK_SIZE \
+    priority 100
+
   # ----------------------------------------------------------------------
   # Queued component instances
   # ----------------------------------------------------------------------

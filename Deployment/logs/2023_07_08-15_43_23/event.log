@@ -1,0 +1,11 @@
+2023-07-07 23:12:29,(2(0)-1688735549:990687),cmdDisp.OpCodeDispatched,1281,EventSeverity.COMMAND,Opcode 0x1000 dispatched to port 0
+2023-07-07 23:12:29,(2(0)-1688735549:991585),camController.CREATED_DIR,4096,EventSeverity.ACTIVITY_LO,new dir_name: testing
+2023-07-07 23:12:29,(2(0)-1688735549:991738),cmdDisp.OpCodeCompleted,1282,EventSeverity.COMMAND,Opcode 0x1000 completed
+2023-07-07 23:13:10,(2(0)-1688735590:926115),cmdDisp.OpCodeDispatched,1281,EventSeverity.COMMAND,Opcode 0x802 dispatched to port 5
+2023-07-07 23:13:10,(2(0)-1688735590:926161),fileManager.RemoveDirectoryStarted,2063,EventSeverity.ACTIVITY_HI,Removing directory testing...
+2023-07-07 23:13:10,(2(0)-1688735590:928231),fileManager.RemoveDirectorySucceeded,2057,EventSeverity.ACTIVITY_HI,Removed directory testing successfully
+2023-07-07 23:13:10,(2(0)-1688735590:928461),cmdDisp.OpCodeCompleted,1282,EventSeverity.COMMAND,Opcode 0x802 completed
+2023-07-07 23:13:13,(2(0)-1688735593:989358),cmdDisp.OpCodeDispatched,1281,EventSeverity.COMMAND,Opcode 0x802 dispatched to port 5
+2023-07-07 23:13:13,(2(0)-1688735593:989414),fileManager.RemoveDirectoryStarted,2063,EventSeverity.ACTIVITY_HI,Removing directory testing...
+2023-07-07 23:13:13,(2(0)-1688735593:989796),fileManager.DirectoryRemoveError,2049,EventSeverity.WARNING_HI,Could not remove directory testing, returned status 7
+2023-07-07 23:13:13,(2(0)-1688735593:990146),cmdDisp.OpCodeError,1283,EventSeverity.COMMAND,Opcode 0x802 completed with error EXECUTION_ERROR

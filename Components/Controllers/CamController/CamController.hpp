@@ -42,7 +42,7 @@ namespace OBC {
       void CREATE_DIR_cmdHandler(
           const FwOpcodeType opCode, /*!< The opcode*/
           const U32 cmdSeq, /*!< The command sequence number*/
-          const Fw::CmdStringArg& dir_name 
+          const Fw::CmdStringArg& dirName 
       );
 
 
