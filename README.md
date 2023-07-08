@@ -31,7 +31,7 @@ fprime-util build
 ```
 3. Open F' GDS control page
    
-  In /OBC-deployment/Deployment
+   In /OBC-deployment/Deployment
   ```
   fprime-gds
   ```
