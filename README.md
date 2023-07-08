@@ -10,7 +10,7 @@ F´ (F Prime) is a component-driven framework that enables rapid development and
 2. CMD+shift+P (For Windows: Ctrl+Shift+P), type: Dev Containers: build and open in container
 3. After finishing building the container, open a new terminal in VS code
 
-## How to use (B): Native
+## How to use (A): Native
 1. Work in the Docker container
 
 2. In /OBC-deployment:
@@ -30,7 +30,7 @@ fprime-util build
   fprime-gds
   ```
 
-## How to use (A): Cross-Compiling for Raspberry pi
+## How to use (B): Cross-Compiling for Raspberry pi
 1. Work in the Docker container
 
 2. In /OBC-deployment:
