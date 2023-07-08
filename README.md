@@ -10,28 +10,27 @@ F´ (F Prime) is a component-driven framework that enables rapid development and
 VS code: build and reopen in container
 
 1. /OBC-deployment:
-
-run: fprime-util generate
-
+```
+fprime-util generate
+```
 2. /OBC-deployment/Deployment
-
-run: fprime-util generate raspberrypi
-
-run: fprime-util build raspberrypi
-
+```
+fprime-util generate raspberrypi
+fprime-util build raspberrypi
+```
 3. Connect the board and the ground station computer to the same network
 
-4. Ground station computer
-in /OBC-deployment/Deployment
-
-run: fprime-gds -n --dictionary build-artifacts/raspberrypi/Deployment/dict/DeploymentTopologyAppDictionary.xml
-
+4. /OBC-deployment/Deployment
+```
+fprime-gds -n --dictionary build-artifacts/raspberrypi/Deployment/dict/DeploymentTopologyAppDictionary.xml
+```
 5. Copy executable over to the board's home directory
 in /OBC-deployment/Deployment
-
-run: scp build-artifacts/raspberrypi/Deployment/bin/Deployment <USER_ACCOUNT>@<RASPBERRY_PI_IP_ADDRESS>:~
-
+```
+scp build-artifacts/raspberrypi/Deployment/bin/Deployment <USER_ACCOUNT>@<RASPBERRY_PI_IP_ADDRESS>:~
+```
 6. Running executable on the raspberry pi
-run: ssh <USER_ACCOUNT>@<RASPBERRY_PI_IP_ADDRESS>
-
-run: ./Deployment -a <GROUND_STATION_COMPUTER_IP> -p 50000
+```
+ssh <USER_ACCOUNT>@<RASPBERRY_PI_IP_ADDRESS>
+./Deployment -a <GROUND_STATION_COMPUTER_IP> -p 50000
+```
