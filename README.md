@@ -7,9 +7,10 @@ F´ (F Prime) is a component-driven framework that enables rapid development and
 
 # How to use:
 0. Work in the container
+
 VS code: build and reopen in container
 
-1. /OBC-deployment:
+2. /OBC-deployment:
 ```
 fprime-util generate
 ```
