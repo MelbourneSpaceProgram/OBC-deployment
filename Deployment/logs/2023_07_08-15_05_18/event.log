@@ -1,8 +1,0 @@
-2023-07-07 22:35:36,(2(0)-1688733336:657359),cmdDisp.OpCodeDispatched,1281,EventSeverity.COMMAND,Opcode 0x800 dispatched to port 4
-2023-07-07 22:35:36,(2(0)-1688733336:657410),fileManager.CreateDirectoryStarted,2062,EventSeverity.ACTIVITY_HI,Creating directory test...
-2023-07-07 22:35:36,(2(0)-1688733336:658844),fileManager.CreateDirectorySucceeded,2056,EventSeverity.ACTIVITY_HI,Created directory test successfully
-2023-07-07 22:35:36,(2(0)-1688733336:659181),cmdDisp.OpCodeCompleted,1282,EventSeverity.COMMAND,Opcode 0x800 completed
-2023-07-07 22:36:18,(2(0)-1688733378:983097),cmdDisp.OpCodeDispatched,1281,EventSeverity.COMMAND,Opcode 0x802 dispatched to port 4
-2023-07-07 22:36:18,(2(0)-1688733378:983276),fileManager.RemoveDirectoryStarted,2063,EventSeverity.ACTIVITY_HI,Removing directory test...
-2023-07-07 22:36:18,(2(0)-1688733378:983897),fileManager.RemoveDirectorySucceeded,2057,EventSeverity.ACTIVITY_HI,Removed directory test successfully
-2023-07-07 22:36:18,(2(0)-1688733378:984073),cmdDisp.OpCodeCompleted,1282,EventSeverity.COMMAND,Opcode 0x802 completed
