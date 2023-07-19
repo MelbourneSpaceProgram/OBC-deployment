@@ -37,12 +37,12 @@ namespace OBC {
       // Command handler implementations
       // ----------------------------------------------------------------------
 
-      //! Implementation for CREATE_DIR command handler
+      //! Implementation for CREATE_TXT_FILE command handler
       //! 
-      void CREATE_DIR_cmdHandler(
+      void CREATE_TXT_FILE_cmdHandler(
           const FwOpcodeType opCode, /*!< The opcode*/
           const U32 cmdSeq, /*!< The command sequence number*/
-          const Fw::CmdStringArg& dirName 
+          const Fw::CmdStringArg& message 
       );
 
 

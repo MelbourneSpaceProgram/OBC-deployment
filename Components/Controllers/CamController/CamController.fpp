@@ -2,11 +2,16 @@ module OBC {
     @ Camera Controller
     active component CamController {
 
-        async command CREATE_DIR(dirName: string size 10)
+        async command CREATE_TXT_FILE(message: string size 10)
 
-        event CREATED_DIR(
-            dirName: string size 10 
-        ) severity activity low format "new dir_name: {}"
+        event CreatedFileSucceed(
+            message: string size 10 
+        ) severity activity low format "message: {}"
+
+        event CreatedFileError(
+            message: string size 10
+            status: U32
+        ) severity activity high format "cannot create txt file for message: {}, returned status {}"
 
         ##############################################################################
         #### Uncomment the following examples to start customizing your component ####
