@@ -53,7 +53,7 @@ fprime-util build raspberrypi
 
 4. Open F' GDS control page
 
-   In /OBC-deployment/Deployment
+   In /OBC-deployment/Deployment (do not run in vs code terminal)
 ```
 fprime-gds -n --dictionary build-artifacts/raspberrypi/Deployment/dict/DeploymentTopologyAppDictionary.xml
 ```
