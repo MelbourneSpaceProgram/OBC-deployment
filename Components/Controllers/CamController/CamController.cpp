@@ -8,6 +8,11 @@
 #include <Components/Controllers/CamController/CamController.hpp>
 #include <FpConfig.hpp>
 #include "Os/File.hpp"
+#include "Fw/Logger/Logger.hpp"
+
+// #include <iostream>
+// #include <stdio.h>
+// #include <curl/curl.h>
 
 namespace OBC {
 
@@ -40,28 +45,48 @@ namespace OBC {
         const Fw::CmdStringArg& message
     )
   {
-    Os::File file;
-    Os::File::Status status = file.open("test.txt", Os::File::OPEN_WRITE);
-    if (status != Os::File::OP_OK) {
-      this->log_ACTIVITY_HI_CreatedFileError(
-          message,
-          status
-      );
-      return;
-    }
+    // Os::File file;
+    // Os::File::Status status = file.open("capturedImage.png", Os::File::OPEN_WRITE);
+    // if (status != Os::File::OP_OK) {
+    //   this->log_ACTIVITY_HI_CreatedFileError(
+    //       message,
+    //       status
+    //   );
+    //   return;
+    // }
 
-    NATIVE_INT_TYPE size = message.length();
-    status = file.write(message.toChar(), size);
+    // FILE *file = fopen("capturedImage.jpg", "wb");
+    // if (!file) {
+    //   Fw::Logger::logMsg("File cannot be opened");
+    // }
+    // CURL *curl;
+    // CURLcode res;
 
-    if (status != Os::File::OP_OK) {
-      this->log_ACTIVITY_HI_CreatedFileError(
-          message,
-          status
-      );
-      return;
-    }
+    // curl = curl_easy_init();
+    // if(curl) {
+    //   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);
+    //   curl_easy_setopt(curl, CURLOPT_WRITEDATA, file); 
+    //   curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+    //   curl_easy_setopt(curl, CURLOPT_URL, "127.0.0.1:6001/capturedImage.jpg");
+      
+    //   /* Perform the request, res will get the return code */
+    //   res = curl_easy_perform(curl);
+    //   /* Check for errors */
+    //   if(res != CURLE_OK) {
+    //     // this->log_ACTIVITY_HI_CreatedFileError(
+    //     //   message,
+          
+    //     // );
+    //     std::cout << res << std::endl;
+    //     return;
+    //   }
+        
+    // }
+    // /* always cleanup */
+    // curl_easy_cleanup(curl);
+    // fclose(file);
 
-    file.~File();
+    // file.~File();
 
     this->log_ACTIVITY_LO_CreatedFileSucceed(message);
     this->cmdResponse_out(opCode,cmdSeq,Fw::CmdResponse::OK);

@@ -6,6 +6,7 @@
 # UT_SOURCE_FILES: list of source files for unit tests
 #
 ####
+
 set(SOURCE_FILES
   "${CMAKE_CURRENT_LIST_DIR}/CamController.fpp"
   "${CMAKE_CURRENT_LIST_DIR}/CamController.cpp"
@@ -19,3 +20,8 @@ set(SOURCE_FILES
 # )
 
 register_fprime_module()
+
+# get_module_name("${CMAKE_CURRENT_LIST_DIR}")
+# find_package(CURL REQUIRED) 
+# include_directories(${CURL_INCLUDE_DIR})
+# target_link_libraries(${MODULE_NAME} PRIVATE ${CURL_LIBRARIES})
