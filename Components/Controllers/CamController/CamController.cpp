@@ -10,9 +10,9 @@
 #include "Os/File.hpp"
 #include "Fw/Logger/Logger.hpp"
 
-// #include <iostream>
+#include <iostream>
 // #include <stdio.h>
-// #include <curl/curl.h>
+#include <curl/curl.h>
 
 namespace OBC {
 
@@ -55,36 +55,36 @@ namespace OBC {
     //   return;
     // }
 
-    // FILE *file = fopen("capturedImage.jpg", "wb");
-    // if (!file) {
-    //   Fw::Logger::logMsg("File cannot be opened");
-    // }
-    // CURL *curl;
-    // CURLcode res;
+    FILE *file = fopen("capturedImage.jpg", "wb");
+    if (!file) {
+      Fw::Logger::logMsg("File cannot be opened");
+    }
+    CURL *curl;
+    CURLcode res;
 
-    // curl = curl_easy_init();
-    // if(curl) {
-    //   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);
-    //   curl_easy_setopt(curl, CURLOPT_WRITEDATA, file); 
-    //   curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-    //   curl_easy_setopt(curl, CURLOPT_URL, "127.0.0.1:6001/capturedImage.jpg");
+    curl = curl_easy_init();
+    if(curl) {
+      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);
+      curl_easy_setopt(curl, CURLOPT_WRITEDATA, file); 
+      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+      curl_easy_setopt(curl, CURLOPT_URL, "192.168.0.97:6001/capturedImage.jpg");
       
-    //   /* Perform the request, res will get the return code */
-    //   res = curl_easy_perform(curl);
-    //   /* Check for errors */
-    //   if(res != CURLE_OK) {
-    //     // this->log_ACTIVITY_HI_CreatedFileError(
-    //     //   message,
+      /* Perform the request, res will get the return code */
+      res = curl_easy_perform(curl);
+      /* Check for errors */
+      if(res != CURLE_OK) {
+        // this->log_ACTIVITY_HI_CreatedFileError(
+        //   message,
           
-    //     // );
-    //     std::cout << res << std::endl;
-    //     return;
-    //   }
+        // );
+        std::cout << res << std::endl;
+        return;
+      }
         
-    // }
-    // /* always cleanup */
-    // curl_easy_cleanup(curl);
-    // fclose(file);
+    }
+    /* always cleanup */
+    curl_easy_cleanup(curl);
+    fclose(file);
 
     // file.~File();
 

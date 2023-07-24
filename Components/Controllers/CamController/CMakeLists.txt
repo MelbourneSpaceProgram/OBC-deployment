@@ -16,12 +16,14 @@ set(SOURCE_FILES
 # they might not be available when cmake tries to build this component.
 
 # set(MOD_DEPS
-#     Add your dependencies here
+
 # )
 
 register_fprime_module()
 
-# get_module_name("${CMAKE_CURRENT_LIST_DIR}")
-# find_package(CURL REQUIRED) 
-# include_directories(${CURL_INCLUDE_DIR})
-# target_link_libraries(${MODULE_NAME} PRIVATE ${CURL_LIBRARIES})
+# Retrieve the name of the module that converts the root path of your project to a underscore, i.e. Fw/Types becomes Fw_Types.
+get_module_name("${CMAKE_CURRENT_LIST_DIR}")
+
+# Tell the compiler the path to the library header file.
+include_directories("/workspaces/OBC-deployment/curl-7.59.0/include")
+target_link_libraries(${MODULE_NAME} PUBLIC "/workspaces/OBC-deployment/curl-7.59.0/lib/libcurl.a")
