@@ -2,16 +2,13 @@ module OBC {
     @ Camera Controller
     active component CamController {
 
-        async command CREATE_TXT_FILE(message: string size 10)
+        async command TAKE_PHOTO()
 
-        event CreatedFileSucceed(
-            message: string size 10 
-        ) severity activity low format "message: {}"
+        event OpenFileError(
+        ) severity activity high format "Could not open file for writing"
 
-        event CreatedFileError(
-            message: string size 10
-            status: U32
-        ) severity activity high format "cannot create txt file for message: {}, returned status {}"
+        event TakePhotoError(
+        ) severity activity high format "Could not get photo"
 
         ##############################################################################
         #### Uncomment the following examples to start customizing your component ####

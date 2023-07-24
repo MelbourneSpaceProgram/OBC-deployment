@@ -11,7 +11,8 @@
 #include "Fw/Logger/Logger.hpp"
 
 #include <iostream>
-// #include <stdio.h>
+#include <ctime>
+#include <sstream>
 #include <curl/curl.h>
 
 namespace OBC {
@@ -39,26 +40,23 @@ namespace OBC {
   // ----------------------------------------------------------------------
 
   void CamController ::
-    CREATE_TXT_FILE_cmdHandler(
+    TAKE_PHOTO_cmdHandler(
         const FwOpcodeType opCode,
-        const U32 cmdSeq,
-        const Fw::CmdStringArg& message
+        const U32 cmdSeq
     )
   {
-    // Os::File file;
-    // Os::File::Status status = file.open("capturedImage.png", Os::File::OPEN_WRITE);
-    // if (status != Os::File::OP_OK) {
-    //   this->log_ACTIVITY_HI_CreatedFileError(
-    //       message,
-    //       status
-    //   );
-    //   return;
-    // }
+    const char* CAM_API_URL = "192.168.0.97:6001/capturedImage.jpg";
+    std::stringstream ss;
+    std::time_t timestamp = std::time(nullptr);
+    ss << timestamp;
+    std::string filename = "capturedImages/" + ss.str() + ".jpg";
 
-    FILE *file = fopen("capturedImage.jpg", "wb");
+    FILE *file = fopen(filename.c_str(), "wb");
     if (!file) {
-      Fw::Logger::logMsg("File cannot be opened");
+      this->log_ACTIVITY_HI_OpenFileError();
+      return;
     }
+    
     CURL *curl;
     CURLcode res;
 
@@ -67,16 +65,13 @@ namespace OBC {
       curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);
       curl_easy_setopt(curl, CURLOPT_WRITEDATA, file); 
       curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-      curl_easy_setopt(curl, CURLOPT_URL, "192.168.0.97:6001/capturedImage.jpg");
+      curl_easy_setopt(curl, CURLOPT_URL, CAM_API_URL);
       
       /* Perform the request, res will get the return code */
       res = curl_easy_perform(curl);
       /* Check for errors */
       if(res != CURLE_OK) {
-        // this->log_ACTIVITY_HI_CreatedFileError(
-        //   message,
-          
-        // );
+        this->log_ACTIVITY_HI_TakePhotoError();
         std::cout << res << std::endl;
         return;
       }
@@ -86,9 +81,6 @@ namespace OBC {
     curl_easy_cleanup(curl);
     fclose(file);
 
-    // file.~File();
-
-    this->log_ACTIVITY_LO_CreatedFileSucceed(message);
     this->cmdResponse_out(opCode,cmdSeq,Fw::CmdResponse::OK);
   }
 

@@ -37,12 +37,11 @@ namespace OBC {
       // Command handler implementations
       // ----------------------------------------------------------------------
 
-      //! Implementation for CREATE_TXT_FILE command handler
+      //! Implementation for TAKE_PHOTO command handler
       //! 
-      void CREATE_TXT_FILE_cmdHandler(
+      void TAKE_PHOTO_cmdHandler(
           const FwOpcodeType opCode, /*!< The opcode*/
-          const U32 cmdSeq, /*!< The command sequence number*/
-          const Fw::CmdStringArg& message 
+          const U32 cmdSeq /*!< The command sequence number*/
       );
 
 
