@@ -9,7 +9,7 @@ ObcDataFraming::ObcDataFraming(): FramingProtocol() {}
 ObcDataDeframing::ObcDataDeframing(): DeframingProtocol() {}
 
 void ObcDataFraming::frame (const U8* const data, const U32 size, Fw::ComPacket::ComPacketType packet_type) {
-    U32 syncHeader = 0x2269;
+    U16 syncHeader = OpenLstHeader::START_WORD;
     U8 length = size; //Number of bytes that comes after B0-B2, see Ricardo. J. Fig. 2
     U32 total_size = sizeof (syncHeader) + sizeof (length) + length;
 
@@ -60,8 +60,35 @@ bool ObcDataDeframing::validate(Types::CircularBuffer& ring, U32 size) {
 
 }
 
-DeframingProtocol::DeframingStatus FprimeDeframing::deframe(Types::CircularBuffer& ring, U32& needed) {
+DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuffer& ring, U32& needed) {
+    FW_ASSERT(m_interface != nullptr);
+    // Check for header or ask for more data
+    if (ring.get_allocated_size() < OpenLstHeader::SIZE) {
+        needed = OpenLstHeader::SIZE;
+        return DeframingProtocol::DEFRAMING_MORE_NEEDED;
+    }
 
+    // Read start value from header
+    U8 start0, start1;
+    Fw::SerializeStatus status = ring.peek(start0, 0);
+    FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
+    Fw::SerializeStatus status = ring.peek(start1, 0);
+    FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
+
+    U16 start = start0 << 8;
+    start = start | start1;
+    if (start != OpenLstHeader::START_WORD) {
+        // Start word must be valid
+        return DeframingProtocol::DEFRAMING_INVALID_FORMAT;
+    }
+
+    // Read length from header
+    U8 length;
+    status = ring.peek(length, sizeof(U8));
+    FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
+    needed = (sizeof(OpenLstHeader::START_WORD) + sizeof(length) + length);
+
+    
 }
 
 }

@@ -5,6 +5,14 @@
 #include <Svc/FramingProtocol/DeframingProtocol.hpp>
 
 namespace OBC_Deployment {
+
+  namespace OpenLstHeader {
+    enum {
+      SIZE = 8,
+    };
+
+    const U16 START_WORD = static_cast<U16> (0x2269);
+  }
     
   //! \brief Implements the pure OpenLST framing protocol
   class ObcDataFraming: public FramingProtocol {
