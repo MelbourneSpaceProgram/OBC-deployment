@@ -58,6 +58,8 @@ void ObcDataFraming::frame (const U8* const data, const U32 size, Fw::ComPacket:
 
 bool ObcDataDeframing::validate(Types::CircularBuffer& ring, U32 size) {
 
+    //OpenLst doesn't provide hashing?? Assume true;
+    return true;
 }
 
 DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuffer& ring, U32& needed) {
