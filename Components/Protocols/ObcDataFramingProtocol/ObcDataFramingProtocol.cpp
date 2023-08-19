@@ -72,7 +72,7 @@ DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuff
     U8 start0, start1;
     Fw::SerializeStatus status = ring.peek(start0, 0);
     FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
-    Fw::SerializeStatus status = ring.peek(start1, 0);
+    Fw::SerializeStatus status = ring.peek(start1, sizeof(U8)); //read 2nd byte
     FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
 
     U16 start = start0 << 8;
@@ -84,11 +84,34 @@ DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuff
 
     // Read length from header
     U8 length;
-    status = ring.peek(length, sizeof(U8));
+    status = ring.peek(length, 2*sizeof(U8)); //read 3rd byte
     FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
     needed = (sizeof(OpenLstHeader::START_WORD) + sizeof(length) + length);
 
-    
+    //check frame size
+    if (needed > ring.get_capacity()) {
+        // Frame size is too large for ring buffer
+        return DeframingProtocol::DEFRAMING_INVALID_SIZE;
+    }
+    // Check for enough data to deserialize everything;
+    // otherwise break and wait for more.
+    else if (ring.get_allocated_size() < needed) {
+        return DeframingProtocol::DEFRAMING_MORE_NEEDED;
+    }
+
+    //Skip checksum, OpenLst has no checksum
+
+    Fw::Buffer buffer = m_interface->allocate(size);
+
+    // Some allocators may return buffers larger than requested.
+    // That causes issues in routing; adjust size.
+    FW_ASSERT(buffer.getSize() >= size);
+    buffer.setSize(size);
+    status = ring.peek(buffer.getData(), size, 3*sizeof(U8)); //read the rest after 3rd byte
+    FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
+    m_interface->route(buffer);
+    return DeframingProtocol::DEFRAMING_STATUS_SUCCESS;
+
 }
 
 }
