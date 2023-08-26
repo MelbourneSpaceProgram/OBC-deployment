@@ -1,8 +1,8 @@
 #ifndef OBC_FRAMING_HPP
 #define OBC_FRAMING_HPP
 
-#include <Svc/FramingProtocol/FramingProtocol.hpp>
-#include <Svc/FramingProtocol/DeframingProtocol.hpp>
+#include "Svc/FramingProtocol/FramingProtocol.hpp"
+#include "Svc/FramingProtocol/DeframingProtocol.hpp"
 
 namespace OBC_Deployment {
 
@@ -12,10 +12,10 @@ namespace OBC_Deployment {
     };
 
     const U16 START_WORD = static_cast<U16> (0x2269);
-  }
+  };
     
   //! \brief Implements the pure OpenLST framing protocol
-  class ObcDataFraming: public FramingProtocol {
+  class ObcDataFraming: public Svc::FramingProtocol {
     public:
 
       //! Constructor
@@ -33,7 +33,7 @@ namespace OBC_Deployment {
   };
 
   //! \brief Implements the pure OpenLST deframing protocol
-  class ObcDataDeframing : public DeframingProtocol {
+  class ObcDataDeframing : public Svc::DeframingProtocol {
     public:
 
       //! Constructor

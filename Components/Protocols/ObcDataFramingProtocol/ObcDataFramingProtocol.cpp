@@ -4,9 +4,9 @@
 
 namespace OBC_Deployment {
 
-ObcDataFraming::ObcDataFraming(): FramingProtocol() {}
+ObcDataFraming::ObcDataFraming(): Svc::FramingProtocol() {}
 
-ObcDataDeframing::ObcDataDeframing(): DeframingProtocol() {}
+ObcDataDeframing::ObcDataDeframing(): Svc::DeframingProtocol() {}
 
 void ObcDataFraming::frame (const U8* const data, const U32 size, Fw::ComPacket::ComPacketType packet_type) {
     U16 syncHeader = OpenLstHeader::START_WORD;
@@ -62,7 +62,7 @@ bool ObcDataDeframing::validate(Types::CircularBuffer& ring, U32 size) {
     return true;
 }
 
-DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuffer& ring, U32& needed) {
+Svc::DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuffer& ring, U32& needed) {
     FW_ASSERT(m_interface != nullptr);
     // Check for header or ask for more data
     if (ring.get_allocated_size() < OpenLstHeader::SIZE) {
@@ -74,7 +74,7 @@ DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuff
     U8 start0, start1;
     Fw::SerializeStatus status = ring.peek(start0, 0);
     FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
-    Fw::SerializeStatus status = ring.peek(start1, sizeof(U8)); //read 2nd byte
+    status = ring.peek(start1, sizeof(U8)); //read 2nd byte
     FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
 
     U16 start = start0 << 8;
@@ -103,13 +103,13 @@ DeframingProtocol::DeframingStatus ObcDataDeframing::deframe(Types::CircularBuff
 
     //Skip checksum, OpenLst has no checksum
 
-    Fw::Buffer buffer = m_interface->allocate(size);
+    Fw::Buffer buffer = m_interface->allocate(length);
 
     // Some allocators may return buffers larger than requested.
     // That causes issues in routing; adjust size.
-    FW_ASSERT(buffer.getSize() >= size);
-    buffer.setSize(size);
-    status = ring.peek(buffer.getData(), size, 3*sizeof(U8)); //read the rest after 3rd byte
+    FW_ASSERT(buffer.getSize() >= length);
+    buffer.setSize(length);
+    status = ring.peek(buffer.getData(), length, 3*sizeof(U8)); //read the rest after 3rd byte
     FW_ASSERT(status == Fw::FW_SERIALIZE_OK, status);
     m_interface->route(buffer);
     return DeframingProtocol::DEFRAMING_STATUS_SUCCESS;
