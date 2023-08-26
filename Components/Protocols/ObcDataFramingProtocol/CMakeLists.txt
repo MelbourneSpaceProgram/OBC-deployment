@@ -6,4 +6,4 @@ set(MOD_DEPS
    Svc/FramingProtocol
 )
 
-# register_fprime_module()
+register_fprime_module()
