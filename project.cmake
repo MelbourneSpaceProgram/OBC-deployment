@@ -10,3 +10,4 @@ add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Structs/AdapterPor
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Behaviors/ScienceMode/")
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Controllers/CamController/")
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Protocols/ObcDataFramingProtocol")
+add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Components/Controllers/CommController/")
