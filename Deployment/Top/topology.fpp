@@ -47,6 +47,7 @@ module Deployment {
     instance systemResources
     instance packetSender
     instance adapter
+    instance commController
     instance linuxI2cDriver
     instance linuxSpiDriver
 

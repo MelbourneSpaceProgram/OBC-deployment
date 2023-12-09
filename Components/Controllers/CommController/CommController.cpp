@@ -42,9 +42,10 @@ namespace OBC {
     // TODO
     this->cmdResponse_out(opCode,cmdSeq,Fw::CmdResponse::OK);
   
-    const U8 mock_data[] = "mock_data";
-    this->send2Framer_out (mock_data, sizeof (mock_data), Fw::ComPacket::FW_PACKET_COMMAND);
-    this->log_ACTIVITY_LOW_CONFIG_ISSUED ("mock config issued");
+    const U8 mock_data[10] = "mock_data";
+    Fw::ComBuffer combuffer (mock_data, 10);
+    this->send2Framer_out (0, combuffer, 0);
+    this->log_ACTIVITY_LO_CONFIG_ISSUED ("mock config issued");
   }
 
 } // end namespace OBC
