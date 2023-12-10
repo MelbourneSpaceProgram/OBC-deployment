@@ -73,4 +73,4 @@ For detailed tutorials, refer to
 
 HelloWorld Tutorial: https://github.com/fprime-community/fprime-tutorial-hello-world/blob/main/docs/HelloWorld.md
 
-MathComponent Tutorial (Custom Ports and Types): https://nasa.github.io/fprime/Tutorials/MathComponent/Tutorial.html
+MathComponent Tutorial (Custom Ports and Types): [https://nasa.github.io/fprime/Tutorials/MathComponent/Tutorial.html](https://nasa.github.io/fprime/v2.0.0/Tutorials/MathComponent/Tutorial.html)https://nasa.github.io/fprime/v2.0.0/Tutorials/MathComponent/Tutorial.html
